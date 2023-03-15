@@ -1,11 +1,11 @@
-About yambo
-===========
+About yambo-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/yambo-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.yambo-code.org/
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/yambo-feedstock/blob/main/LICENSE.txt)
 
 Summary: Open-source many-body perturbation theory and time-dependent density functional theory
 
