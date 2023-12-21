@@ -3,15 +3,19 @@
 export CPP="${CC} -E -P"
 export FPP="${FC} -E -P -cpp"
 ./configure \
-    --enable-openmp \
+    --enable-mpi --enable-openmp \
     --with-fft-path="${PREFIX}" \
-    --enable-hdf5-par-io \
     --with-hdf5-path="${PREFIX}" \
-    --with-netcdf-path="${PREFIX}"
-    #--enable-slepc-linalg \
-    #--with-slepc-path="${PREFIX}" \
-    #--with-petsc-path="${PREFIX}" \
-
+    --with-netcdf-path="${PREFIX}" \
+    --with-netcdff-path="${PREFIX}" \
+    --enable-hdf5-par-io \
+    --with-libxc-path="${PREFIX}" \
+    --with-scalapack-libs="${PREFIX}/lib/libscalapack.so" \
+    --with-blacs-libs="${PREFIX}/lib/libscalapack.so" \
+    --enable-par-linalg \
+    --with-slepc-path="${PREFIX}" \
+    --with-petsc-path="${PREFIX}" \
+    --enable-slepc-linalg 
 
 make -j$CPU_COUNT all
 

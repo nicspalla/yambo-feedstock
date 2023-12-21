@@ -10,7 +10,7 @@ source:
   sha256: eb41e83df716eb87261cf130ffe7f930e7dc2e123343d47b73d5a3c69fea7316
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
@@ -22,23 +22,44 @@ requirements:
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
     - wget
-  host:
     - openmpi
-    - fftw
     - libblas
     - liblapack
-    - hdf5 * *openmpi*
-    - libnetcdf * *openmpi*
-    - netcdf-fortran * *openmpi*
-    # re-enable after complex variants of libraries are available
-    # https://github.com/conda-forge/petsc-feedstock/issues/17
-    # - slepc
-    # - petsc
+    - fftw * *openmpi*
+    - hdf5 1.10 *openmpi*
+    - libnetcdf 4.7 *openmpi*
+    - netcdf-fortran 4.5 *openmpi*
+    - zlib
+    - scalapack
+    - libxc * *cpu*
+    - petsc * *complex*
+    - slepc * *complex*
+  host:
+    - openmpi
+    - libblas
+    - liblapack
+    - fftw * *openmpi*
+    - hdf5 1.10 *openmpi*
+    - libnetcdf 4.7 *openmpi*
+    - netcdf-fortran 4.5 *openmpi*
+    - zlib
+    - scalapack
+    - libxc * *cpu*
+    - petsc * *complex*
+    - slepc * *complex*
   run:
     - openmpi
     - fftw
     - zlib
     - libcurl
+    - scalapack
+    - libblas
+    - liblapack
+    - hdf5
+    - libnetcdf
+    - netcdf-fortran
+    - petsc
+    - slepc
 
 test:
   commands:
