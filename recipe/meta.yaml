@@ -22,23 +22,44 @@ requirements:
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
     - wget
-  host:
     - openmpi
-    - fftw
     - libblas
     - liblapack
-    - hdf5 * *openmpi*
-    - libnetcdf * *openmpi*
-    - netcdf-fortran * *openmpi*
-    # re-enable after complex variants of libraries are available
-    # https://github.com/conda-forge/petsc-feedstock/issues/17
-    # - slepc
-    # - petsc
+    - fftw * *openmpi*
+    - hdf5 1.10 *openmpi*
+    - libnetcdf 4.7 *openmpi*
+    - netcdf-fortran 4.5 *openmpi*
+    - zlib
+    - scalapack
+    - libxc * *cpu*
+    - petsc * *complex*
+    - slepc * *complex*
+  host:
+    - openmpi
+    - libblas
+    - liblapack
+    - fftw * *openmpi*
+    - hdf5 1.10 *openmpi*
+    - libnetcdf 4.7 *openmpi*
+    - netcdf-fortran 4.5 *openmpi*
+    - zlib
+    - scalapack
+    - libxc * *cpu*
+    - petsc * *complex*
+    - slepc * *complex*
   run:
     - openmpi
     - fftw
     - zlib
     - libcurl
+    - scalapack
+    - libblas
+    - liblapack
+    - hdf5
+    - libnetcdf
+    - netcdf-fortran
+    - petsc
+    - slepc
 
 test:
   commands:
