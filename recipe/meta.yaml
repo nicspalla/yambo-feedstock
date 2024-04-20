@@ -1,5 +1,5 @@
 {% set name = "yambo" %}
-{% set version = "5.2.0" %}
+{% set version = "5.2.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,15 +7,16 @@ package:
 
 source:
   url: https://github.com/yambo-code/yambo/archive/refs/tags/{{ version }}.tar.gz
-  sha256: eb41e83df716eb87261cf130ffe7f930e7dc2e123343d47b73d5a3c69fea7316
+  sha256: a6168d1fa820af857ac51217bd6ad26dda4cc89c07e035bd7dc230038ae1ab9c
 
 build:
-  number: 1
+  number: 0
   skip: true  # [not linux]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
     - make
     - m4
