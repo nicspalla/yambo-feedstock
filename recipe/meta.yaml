@@ -1,5 +1,6 @@
 {% set name = "yambo" %}
 {% set version = "5.2.3" %}
+{% set sha256 = "a6168d1fa820af857ac51217bd6ad26dda4cc89c07e035bd7dc230038ae1ab9c" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +8,10 @@ package:
 
 source:
   url: https://github.com/yambo-code/yambo/archive/refs/tags/{{ version }}.tar.gz
-  sha256: a6168d1fa820af857ac51217bd6ad26dda4cc89c07e035bd7dc230038ae1ab9c
+  sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
@@ -70,7 +71,7 @@ about:
   home: http://www.yambo-code.org/
   license: GPL-2.0-or-later
   license_family: GPL
-  license_file: LICENSE
+  license_file: COPYING
   summary: Open-source many-body perturbation theory and time-dependent density functional theory
   description: |
     YAMBO implements Many-Body Perturbation Theory (MBPT) methods (such as GW and BSE) and Time-Dependent Density Functional Theory (TDDFT), which allows for accurate prediction of fundamental properties as band gaps of semiconductors, band alignments, defect quasi-particle energies, optics and out-of-equilibrium properties of materials.

@@ -3,7 +3,7 @@
 export CPP="${CC} -E -P"
 export FPP="${FC} -E -P -cpp"
 ./configure \
-    --enable-mpi --enable-openmp \
+    --enable-mpi --enable-open-mp \
     --with-fft-path="${PREFIX}" \
     --with-hdf5-path="${PREFIX}" \
     --with-netcdf-path="${PREFIX}" \
