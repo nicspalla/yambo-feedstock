@@ -30,7 +30,7 @@ requirements:
     - fftw * *openmpi*
     - hdf5 1.14 *openmpi*
     - libnetcdf 4.7 *openmpi*
-    - netcdf-fortran 4.5 *openmpi*
+    - netcdf-fortran 4.6 *openmpi*
     - zlib
     - scalapack
     - libxc * *cpu*
@@ -43,7 +43,7 @@ requirements:
     - fftw * *openmpi*
     - hdf5 1.14 *openmpi*
     - libnetcdf 4.7 *openmpi*
-    - netcdf-fortran 4.5 *openmpi*
+    - netcdf-fortran 4.6 *openmpi*
     - zlib
     - scalapack
     - libxc * *cpu*
