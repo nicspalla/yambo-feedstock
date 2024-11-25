@@ -29,7 +29,7 @@ requirements:
     - liblapack
     - fftw * *openmpi*
     - hdf5 1.14 *openmpi*
-    - libnetcdf 4.7 *openmpi*
+    - libnetcdf 4.9 *openmpi*
     - netcdf-fortran 4.6 *openmpi*
     - zlib
     - scalapack
@@ -42,7 +42,7 @@ requirements:
     - liblapack
     - fftw * *openmpi*
     - hdf5 1.14 *openmpi*
-    - libnetcdf 4.7 *openmpi*
+    - libnetcdf 4.9 *openmpi*
     - netcdf-fortran 4.6 *openmpi*
     - zlib
     - scalapack
