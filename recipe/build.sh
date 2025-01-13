@@ -12,6 +12,8 @@ export FPP="${FC} -E -P -cpp"
     --with-libxc-path="${PREFIX}" \
     --with-scalapack-libs="${PREFIX}/lib/libscalapack.so" \
     --with-blacs-libs="${PREFIX}/lib/libscalapack.so" \
+    --with-blas-libs="${PREFIX}/lib/libblas.so" \
+    --with-lapack-libs="${PREFIX}/lib/liblapack.so" \
     --enable-par-linalg \
     --with-slepc-path="${PREFIX}" \
     --with-petsc-path="${PREFIX}" \
