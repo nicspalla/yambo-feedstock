@@ -23,7 +23,7 @@ export FPP="${FC} -E -P -cpp"
     --with-petsc-path="${PREFIX}" \
     --enable-slepc-linalg 
 
-make -j$CPU_COUNT all
+make -j$CPU_COUNT all || for f in `find ./ -name "*.log"`; do echo "Printing the contents of '$f'"; cat $f; done
 
 mkdir -p ${PREFIX}/bin
 cp -r bin/* ${PREFIX}/bin
