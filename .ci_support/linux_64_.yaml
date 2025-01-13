@@ -35,7 +35,7 @@ openmpi:
 petsc:
 - '3.21'
 slepc:
-- '3.19'
+- '3.21'
 target_platform:
 - linux-64
 zip_keys:
