@@ -1,8 +1,12 @@
 #!/bin/bash
 
+set -xe
+
 export CPP="${CC} -E -P"
 export FPP="${FC} -E -P -cpp"
+
 ./configure \
+    --prefix="${PREFIX}" \
     --enable-mpi --enable-open-mp \
     --with-fft-path="${PREFIX}" \
     --with-hdf5-path="${PREFIX}" \
