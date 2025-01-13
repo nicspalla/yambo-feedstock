@@ -25,7 +25,11 @@ export FPP="${FC} -E -P -cpp"
 
 make -j$CPU_COUNT all || for f in `find ./ -name "*.log"`; do echo "Printing the contents of '$f'"; cat $f; done
 
-mkdir -p ${PREFIX}/bin
-cp -r bin/* ${PREFIX}/bin
-mkdir -p ${PREFIX}/lib
-cp -r lib/external/*/*/lib/*.* ${PREFIX}/lib
+ls -la $PREFIX/bin
+
+ls -la $PREFIX/lib
+
+# mkdir -p ${PREFIX}/bin
+# cp -r bin/* ${PREFIX}/bin
+# mkdir -p ${PREFIX}/lib
+# cp -r lib/external/*/*/lib/*.* ${PREFIX}/lib
