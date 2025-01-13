@@ -33,7 +33,7 @@ requirements:
     - netcdf-fortran 4.6 *openmpi*
     - zlib
     - scalapack
-    - libxc <6 *cpu*
+    - libxc <7 *cpu*
     - petsc * *complex*
     - slepc * *complex*
   host:
@@ -46,7 +46,7 @@ requirements:
     - netcdf-fortran 4.6 *openmpi*
     - zlib
     - scalapack
-    - libxc <6 *cpu*
+    - libxc <7 *cpu*
     - petsc * *complex*
     - slepc * *complex*
   run:
