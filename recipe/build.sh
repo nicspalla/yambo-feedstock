@@ -11,7 +11,6 @@ unset LD
 pushd devxlib
 ./configure \
     --prefix="${PREFIX}" \
-    --enable-openmp \
     --with-blas-libs="${PREFIX}/lib/libblas.so" \
     --with-lapack-libs="${PREFIX}/lib/liblapack.so"
 make -j"${CPU_COUNT}" install
