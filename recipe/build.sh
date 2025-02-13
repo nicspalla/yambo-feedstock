@@ -31,7 +31,6 @@ popd
     --with-blas-libs="${PREFIX}/lib/libblas.so" \
     --with-lapack-libs="${PREFIX}/lib/liblapack.so" \
     --with-devxlib-path="${PREFIX}" \
-    --with-iotk-libs="${PWD}/lib/iotk/iotk/src/libiotk.a" \
     --enable-par-linalg \
     --with-slepc-path="${PREFIX}" \
     --with-petsc-path="${PREFIX}" \
