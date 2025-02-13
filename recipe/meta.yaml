@@ -10,7 +10,7 @@ package:
 source:
   - url: https://github.com/yambo-code/yambo/archive/refs/tags/{{ version }}.tar.gz
     sha256: {{ sha256 }}
-  - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/${{ devxlib_version }}/devicexlib-${{ devxlib_version }}.tar.gz
+  - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/{{ devxlib_version }}/devicexlib-{{ devxlib_version }}.tar.gz
     sha256: 498d5c6804e697123d382d9dd35dedeb4b64228704f84711877c842b851d37df
     folder: devxlib
   # - url: https://github.com/yambo-code/yambo-libraries/raw/refs/tags/1.0/external/iotk-y1.2.2.tar.gz
