@@ -1,6 +1,6 @@
 {% set name = "yambo" %}
 {% set version = "5.3.0" %}
-{% set sha256 = "47b7591b31f833f371f6538050ac27e66d7ddb6f82034cad0100a8f02b3d8072" %}
+{% set sha256 = "97b6867c28af6ea690bb02446745e817adcedf95bcd568f132ef3510abbb1cfe" %}
 {% set devxlib_version = "0.8.5" %}
 
 package:
