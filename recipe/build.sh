@@ -2,19 +2,19 @@
 
 set -xe
 
+export CPP="${CC} -E -P"
+export FPP="${FC} -E -P -cpp"
+
 # Build devxlib
 pushd devxlib
-./configure --prefix="${PREFIX}" \
+./configure \
+    --prefix="${PREFIX}" \
     --enable-openmp \
-    --enable-parallel \
     --with-blas-libs="${PREFIX}/lib/libblas.so" \
     --with-lapack-libs="${PREFIX}/lib/liblapack.so"
 make -j"${CPU_COUNT}" install
 popd
 
-
-export CPP="${CC} -E -P"
-export FPP="${FC} -E -P -cpp"
 
 ./configure \
     --prefix="${PREFIX}" \
