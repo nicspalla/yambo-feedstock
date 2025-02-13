@@ -1,7 +1,7 @@
 {% set name = "yambo" %}
 {% set version = "5.3.0" %}
 {% set sha256 = "47b7591b31f833f371f6538050ac27e66d7ddb6f82034cad0100a8f02b3d8072" %}
-{% set devxlib_version="0.8.5" %}
+{% set devxlib_version = "0.8.5" %}
 
 package:
   name: {{ name }}
@@ -10,7 +10,7 @@ package:
 source:
   - url: https://github.com/yambo-code/yambo/archive/refs/tags/{{ version }}.tar.gz
     sha256: {{ sha256 }}
-  - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/${{devxlib_version}}/devicexlib-${{devxlib_version}}.tar.gz
+  - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/${{ devxlib_version }}/devicexlib-${{ devxlib_version }}.tar.gz
     sha256: 498d5c6804e697123d382d9dd35dedeb4b64228704f84711877c842b851d37df
     folder: devxlib
   # - url: https://github.com/yambo-code/yambo-libraries/raw/refs/tags/1.0/external/iotk-y1.2.2.tar.gz
@@ -35,9 +35,9 @@ requirements:
     - libblas
     - liblapack
     - fftw * *openmpi*
-    - hdf5 1.14 *openmpi*
-    - libnetcdf 4.9 *openmpi*
-    - netcdf-fortran 4.6 *openmpi*
+    - hdf5 1.12 *openmpi*
+    - libnetcdf 4.7 *openmpi*
+    - netcdf-fortran 4.5 *openmpi*
     - zlib
     - scalapack
     - libxc <7 *cpu*
@@ -48,9 +48,9 @@ requirements:
     - libblas
     - liblapack
     - fftw * *openmpi*
-    - hdf5 1.14 *openmpi*
-    - libnetcdf 4.9 *openmpi*
-    - netcdf-fortran 4.6 *openmpi*
+    - hdf5 1.12 *openmpi*
+    - libnetcdf 4.7 *openmpi*
+    - netcdf-fortran 4.5 *openmpi*
     - zlib
     - scalapack
     - libxc <7 *cpu*
