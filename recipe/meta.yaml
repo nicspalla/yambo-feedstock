@@ -35,7 +35,7 @@ requirements:
     - libblas
     - liblapack
     - fftw * *openmpi*
-    - hdf5 1.12 *openmpi*
+    - hdf5 1.10 *openmpi*
     - libnetcdf 4.7 *openmpi*
     - netcdf-fortran 4.5 *openmpi*
     - zlib
@@ -48,7 +48,7 @@ requirements:
     - libblas
     - liblapack
     - fftw * *openmpi*
-    - hdf5 1.12 *openmpi*
+    - hdf5 1.10 *openmpi*
     - libnetcdf 4.7 *openmpi*
     - netcdf-fortran 4.5 *openmpi*
     - zlib
