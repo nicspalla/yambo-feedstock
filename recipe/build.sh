@@ -5,6 +5,8 @@ set -xe
 export CPP="${CC} -E -P"
 export FPP="${FC} -E -P -cpp"
 
+unset LD
+
 # Build devxlib
 pushd devxlib
 ./configure \
