@@ -1,0 +1,29 @@
+--- tools/configure.orig	2025-02-14 14:49:51.324000000 +0000
++++ tools/configure	2025-02-14 14:51:51.764000000 +0000
+@@ -2398,7 +2398,7 @@
+   then
+     { $as_echo "$as_me:$LINENO: checking intrinsic type $TYPE(kind=$KIND)" >&5
+ $as_echo_n "checking intrinsic type $TYPE(kind=$KIND)... " >&6; }
+-    if test "$cross_compiling" = yes; then
++    if test "$cross_compiling" = "yes-but-no"; then
+   { { $as_echo "$as_me:$LINENO: error: in \`$ac_pwd':" >&5
+ $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+ { { $as_echo "$as_me:$LINENO: error: cannot run test program while cross compiling
+@@ -2525,7 +2525,7 @@
+ # BUG 1
+ { $as_echo "$as_me:$LINENO: checking bug in non-advancing read" >&5
+ $as_echo_n "checking bug in non-advancing read... " >&6; }
+-if test "$cross_compiling" = yes; then
++if test "$cross_compiling" = "yes-but-no"; then
+   { { $as_echo "$as_me:$LINENO: error: in \`$ac_pwd':" >&5
+ $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+ { { $as_echo "$as_me:$LINENO: error: cannot run test program while cross compiling
+@@ -2684,7 +2684,7 @@
+ 
+ { $as_echo "$as_me:$LINENO: checking bug in pack" >&5
+ $as_echo_n "checking bug in pack... " >&6; }
+-if test "$cross_compiling" = yes; then
++if test "$cross_compiling" = "yes-but-no"; then
+   { { $as_echo "$as_me:$LINENO: error: in \`$ac_pwd':" >&5
+ $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+ { { $as_echo "$as_me:$LINENO: error: cannot run test program while cross compiling

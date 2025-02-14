@@ -18,6 +18,8 @@ source:
   - url: https://github.com/yambo-code/yambo-libraries/raw/refs/tags/1.0/external/iotk-y1.2.2.tar.gz
     sha256: 64af6a4b98f3b62fcec603e4e1b00ef994f95a0efa53ab6593ebcfe6de1739ef
     folder: iotk
+    patches:
+      - iotk-cross.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
 
 build:
   number: 0
