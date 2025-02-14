@@ -48,6 +48,7 @@ fi
 
 ./configure \
     --prefix="${PREFIX}" \
+    --disable-iotk \
     --enable-mpi --enable-open-mp \
     --with-fft-path="${PREFIX}" \
     --with-hdf5-path="${PREFIX}" \
@@ -60,9 +61,6 @@ fi
     --with-blas-libs="${PREFIX}/lib/libblas.so" \
     --with-lapack-libs="${PREFIX}/lib/liblapack.so" \
     --with-devxlib-path="${PREFIX}" \
-    --with-iotk-libs="${SRC_DIR}/iotk/src/libiotk.a" \
-    --with-iotk-libdir="${SRC_DIR}/iotk/src" \
-    --with-iotk-includedir="${SRC_DIR}/iotk/include" \
     --enable-par-linalg \
     --with-slepc-path="${PREFIX}" \
     --with-petsc-path="${PREFIX}" \
