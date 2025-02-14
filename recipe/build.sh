@@ -5,9 +5,13 @@ set -xe
 export CPP="${CC} -E -P"
 export FPP="${FC} -E -P -cpp"
 
-unset LD
+export ORIG_LD="${LD}"
+
 
 # Build devxlib
+# `ld $LDFLAGS` fails
+# `gfortran $LDFLAGS` works
+unset LD
 pushd devxlib
 ./configure \
     --prefix="${PREFIX}" \
@@ -17,6 +21,7 @@ make -j"${CPU_COUNT}" install
 popd
 
 
+export LD="${ORIG_LD}"
 ./configure \
     --prefix="${PREFIX}" \
     --enable-mpi --enable-open-mp \
