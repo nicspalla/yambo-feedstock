@@ -48,7 +48,8 @@ fi
 
 ./configure \
     --prefix="${PREFIX}" \
-    --disable-iotk \
+    --enable-iotk=no \
+    --enable-etsf-io \
     --enable-mpi --enable-open-mp \
     --with-fft-path="${PREFIX}" \
     --with-hdf5-path="${PREFIX}" \
