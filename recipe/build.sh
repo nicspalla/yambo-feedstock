@@ -20,8 +20,11 @@ pushd devxlib
 make -j"${CPU_COUNT}" install
 popd
 
-export CFLAGS="$(echo ${CFLAGS} | sed 's/ -march=[^ ]*//g' | sed 's/ -mcpu=[^ ]*//g' |sed 's/ -mtune=[^ ]*//g')"
-export CXXFLAGS="$(echo ${CXXFLAGS} | sed 's/ -march=[^ ]*//g' | sed 's/ -mcpu=[^ ]*//g' |sed 's/ -mtune=[^ ]*//g')"
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
+    sed -i.bak1 's/ -march=[^ ]*//' configure
+    sed -i.bak2 's/ -mcpu=[^ ]*//' configure
+    sed -i.bak3 's/ -mtune=[^ ]*//' configure
+fi
 
 export LD="${ORIG_LD}"
 ./configure \
