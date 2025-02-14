@@ -15,9 +15,6 @@ source:
   - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/{{ devxlib_version }}/devicexlib-{{ devxlib_version }}.tar.gz
     sha256: 498d5c6804e697123d382d9dd35dedeb4b64228704f84711877c842b851d37df
     folder: devxlib
-  # - url: https://github.com/yambo-code/yambo-libraries/raw/refs/tags/1.0/external/iotk-y1.2.2.tar.gz
-  #   sha256: 44803b4a827744610fc8abcc8dc4ee1e802f9db0309cb6b8a0c45685dcd996ae
-  #   folder: iotk
 
 build:
   number: 0
@@ -25,8 +22,8 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
     - {{ compiler('fortran') }}
     - make
     - m4

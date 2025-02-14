@@ -46,7 +46,7 @@ export LD="${ORIG_LD}"
     --with-petsc-path="${PREFIX}" \
     --enable-slepc-linalg || (cat config.log && exit 111)
 
-make -j$CPU_COUNT all || (cat log/*yambo*.log && exit 222)
+make -j$CPU_COUNT all || (cat log/*.log && exit 222)
 #for f in `find ./ -name "*.log"`; do echo "Printing the contents of '$f'"; cat $f; done
 
 ls -la $PREFIX/bin
