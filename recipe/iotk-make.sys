@@ -15,20 +15,20 @@
 # compiler definitions
 
 make             = make
-CC               = $(CC)
-CFLAGS           = $(CFLAGS) $(IFLAGS)
-CPP              = $(CPP)
-FPP              = $(FPP)
-CPPFLAGS         = $(CPPFLAGS) $(IFLAGS)
-FC               = $(FC)
-MPIF90           = $(FC)
-FCFLAGS          = $(FCFLAGS) $(OPENMPLIBS) $(IFLAGS)
-F77              = $(F77)
-FFLAGS           = $(FFLAGS)
-LD               = $(FC)
-LDFLAGS          = $(FCFLAGS) $(OPENMPLIBS) $(IFLAGS)
-AR               = $(AR)
-ARFLAGS          = $(AR_FLAGS)
+CC               ?= gcc
+CFLAGS           ?= $(IFLAGS)
+CPP              ?= cpp
+FPP              ?= $(FC) -E -P -cpp
+CPPFLAGS         ?= $(IFLAGS)
+FC               ?= gfortran
+MPIF90           ?= $(FC)
+FCFLAGS          ?= $(OPENMPLIBS) $(IFLAGS)
+F77              ?= $(FC)
+FFLAGS           ?= 
+LD               ?= $(FC)
+LDFLAGS          ?= $(FCFLAGS) $(OPENMPLIBS) $(IFLAGS)
+AR               ?= $(BUILD_PREFIX)/bin/$(uname -m)-conda-linux-gnu-ar
+ARFLAGS          ?=
 RANLIB           = echo
 
 
