@@ -1,0 +1,47 @@
+--- a/configure.orig	2025-02-14 12:06:37.924000000 +0000
++++ b/configure	2025-02-14 12:16:32.644000000 +0000
+@@ -9480,7 +9480,7 @@
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPIFC"; then
+   eval "$as_ac_File=yes"
+@@ -9718,7 +9718,7 @@
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPIF77"; then
+   eval "$as_ac_File=yes"
+@@ -9791,7 +9791,7 @@
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPIFC"; then
+   eval "$as_ac_File=yes"
+@@ -10056,7 +10056,7 @@
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPICC"; then
+   eval "$as_ac_File=yes"
+@@ -10380,7 +10380,7 @@
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPI_INC_DIR/mpif.h"; then
+   eval "$as_ac_File=yes"

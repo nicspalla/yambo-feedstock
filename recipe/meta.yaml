@@ -10,6 +10,8 @@ package:
 source:
   - url: https://github.com/yambo-code/yambo/archive/refs/tags/{{ version }}.tar.gz
     sha256: {{ sha256 }}
+    patches:
+      - yambo-non-x86.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
   - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/{{ devxlib_version }}/devicexlib-{{ devxlib_version }}.tar.gz
     sha256: 498d5c6804e697123d382d9dd35dedeb4b64228704f84711877c842b851d37df
     folder: devxlib
