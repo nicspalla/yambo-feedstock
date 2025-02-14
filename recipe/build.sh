@@ -31,7 +31,7 @@ fi
 
 cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
 ./configure
-make -j"${CPU_COUNT}" all
+make -j"${CPU_COUNT}" libiotk.a
 popd
 
 # Build Yambo
