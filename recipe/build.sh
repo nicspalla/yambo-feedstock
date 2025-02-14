@@ -20,8 +20,6 @@ pushd devxlib
 make -j"${CPU_COUNT}" install
 popd
 
-export LD="${ORIG_LD}"
-
 # Build iotk
 pushd iotk
 
@@ -36,8 +34,10 @@ cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
 make -j"${CPU_COUNT}" all
 popd
 
-
 # Build Yambo
+
+export LD="${ORIG_LD}"
+
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
     sed -i.bak1 's/ -march=[^ ]*//' configure
     sed -i.bak2 's/ -mcpu=[^ ]*//' configure
