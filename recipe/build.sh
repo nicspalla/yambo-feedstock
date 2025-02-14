@@ -20,6 +20,8 @@ pushd devxlib
 make -j"${CPU_COUNT}" install
 popd
 
+export CFLAGS="$(echo ${CFLAGS} | sed 's/ -march=[^ ]*//g' | sed 's/ -mcpu=[^ ]*//g' |sed 's/ -mtune=[^ ]*//g')"
+export CXXFLAGS="$(echo ${CXXFLAGS} | sed 's/ -march=[^ ]*//g' | sed 's/ -mcpu=[^ ]*//g' |sed 's/ -mtune=[^ ]*//g')"
 
 export LD="${ORIG_LD}"
 ./configure \
