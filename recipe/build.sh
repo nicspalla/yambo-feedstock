@@ -20,13 +20,30 @@ pushd devxlib
 make -j"${CPU_COUNT}" install
 popd
 
+export LD="${ORIG_LD}"
+
+# Build iotk
+pushd iotk
+
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
     sed -i.bak1 's/ -march=[^ ]*//' configure
     sed -i.bak2 's/ -mcpu=[^ ]*//' configure
     sed -i.bak3 's/ -mtune=[^ ]*//' configure
 fi
 
-export LD="${ORIG_LD}"
+cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
+./configure
+make -j"${CPU_COUNT}" all
+popd
+
+
+# Build Yambo
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
+    sed -i.bak1 's/ -march=[^ ]*//' configure
+    sed -i.bak2 's/ -mcpu=[^ ]*//' configure
+    sed -i.bak3 's/ -mtune=[^ ]*//' configure
+fi
+
 ./configure \
     --prefix="${PREFIX}" \
     --enable-mpi --enable-open-mp \
@@ -41,12 +58,14 @@ export LD="${ORIG_LD}"
     --with-blas-libs="${PREFIX}/lib/libblas.so" \
     --with-lapack-libs="${PREFIX}/lib/liblapack.so" \
     --with-devxlib-path="${PREFIX}" \
+    --with-iotk-libdir="iotk/src" \
+    --with-iotk-includedir="iotk/include" \
     --enable-par-linalg \
     --with-slepc-path="${PREFIX}" \
     --with-petsc-path="${PREFIX}" \
     --enable-slepc-linalg || (cat config.log && exit 111)
 
-make -j1 all || (cat log/*.log && exit 222)
+make -j$CPU_COUNT all || (cat log/*.log && exit 222)
 #for f in `find ./ -name "*.log"`; do echo "Printing the contents of '$f'"; cat $f; done
 
 ls -la $PREFIX/bin
