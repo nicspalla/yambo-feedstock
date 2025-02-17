@@ -40,7 +40,7 @@ popd
 
 # Build Yambo
 
-export LD="${ORIG_LD}"
+# export LD="${ORIG_LD}"
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
     sed -i.bak1 's/ -march=[^ ]*//' configure
@@ -62,11 +62,12 @@ fi
     --with-blas-libs="${PREFIX}/lib/libblas.so" \
     --with-lapack-libs="${PREFIX}/lib/liblapack.so" \
     --with-devxlib-path="${PREFIX}" \
+    --with-iotk-libs="${PWD}/lib/iotk/iotk/src/libiotk.a" \
     --enable-par-linalg \
     --with-slepc-path="${PREFIX}" \
     --with-petsc-path="${PREFIX}" \
     --enable-slepc-linalg || (cat config.log && exit 111)
-
+    
 make -j$CPU_COUNT all || (cat log/*.log && exit 222)
 #for f in `find ./ -name "*.log"`; do echo "Printing the contents of '$f'"; cat $f; done
 
