@@ -32,7 +32,9 @@ fi
 cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
 ./configure
 make -j"${CPU_COUNT}" libiotk.a
+cp src/*.{mod,o,spp} include/
 popd
+
 
 ls -la ${SRC_DIR}/iotk/src/libiotk.a
 
@@ -62,7 +64,7 @@ fi
     --with-devxlib-path="${PREFIX}" \
     --with-iotk-libs="${SRC_DIR}/iotk/src/libiotk.a" \
     --with-iotk-libdir="${SRC_DIR}/iotk/src" \
-    --with-iotk-includedir="${SRC_DIR}/iotk/src" \
+    --with-iotk-includedir="${SRC_DIR}/iotk/include" \
     --enable-par-linalg \
     --with-slepc-path="${PREFIX}" \
     --with-petsc-path="${PREFIX}" \
