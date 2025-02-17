@@ -21,22 +21,22 @@ make -j"${CPU_COUNT}" install
 popd
 
 # # Build iotk
-# pushd iotk
+pushd iotk
 
-# if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
-#     sed -i.bak1 's/ -march=[^ ]*//' configure
-#     sed -i.bak2 's/ -mcpu=[^ ]*//' configure
-#     sed -i.bak3 's/ -mtune=[^ ]*//' configure
-# fi
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
+    sed -i.bak1 's/ -march=[^ ]*//' configure
+    sed -i.bak2 's/ -mcpu=[^ ]*//' configure
+    sed -i.bak3 's/ -mtune=[^ ]*//' configure
+fi
 
-# cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
-# ./configure
-# make -j"${CPU_COUNT}" libiotk.a
-# cp src/*.{mod,o,spp} include/
-# popd
+cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
+./configure
+make -j"${CPU_COUNT}" libiotk.a
+cp src/*.mod include/
+popd
 
 
-# ls -la ${SRC_DIR}/iotk/src/libiotk.a
+ls -la ${SRC_DIR}/iotk/src/libiotk.a
 
 # Build Yambo
 
@@ -62,13 +62,15 @@ fi
     --with-blas-libs="${PREFIX}/lib/libblas.so" \
     --with-lapack-libs="${PREFIX}/lib/liblapack.so" \
     --with-devxlib-path="${PREFIX}" \
-    --with-iotk-libs="${PWD}/lib/iotk/iotk/src/libiotk.a" \
+    --with-iotk-libs="${SRC_DIR}/iotk/src/libiotk.a" \
+    --with-iotk-libdir="${SRC_DIR}/iotk/src" \
+    --with-iotk-includedir="${SRC_DIR}/iotk/include" \
     --enable-par-linalg \
     --with-slepc-path="${PREFIX}" \
     --with-petsc-path="${PREFIX}" \
     --enable-slepc-linalg || (cat config.log && exit 111)
     
-make -j$CPU_COUNT all || (cat log/*.log && exit 222)
+make -j1 all || (cat log/*.log && exit 222)
 #for f in `find ./ -name "*.log"`; do echo "Printing the contents of '$f'"; cat $f; done
 
 ls -la $PREFIX/bin
