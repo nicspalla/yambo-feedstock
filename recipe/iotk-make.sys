@@ -1,0 +1,41 @@
+
+# -----------------------------
+# compilation rules
+
+.SUFFIXES :
+.SUFFIXES : .o .c .F .f90
+
+.F.o:
+	@rm -f $*.f90
+	(eval $(FPP) $(IFLAGS) $(dopts) $*.F > $*.f90 ) > /dev/null
+	(eval $(MPIF90)  $(FCFLAGS) -c $*.f90 ) > /dev/null
+	@rm -f $*.f90
+
+# -----------------------------
+# compiler definitions
+
+make             = make
+CC               ?= gcc
+CFLAGS           ?= $(IFLAGS)
+CPP              ?= cpp
+FPP              ?= $(FC) -E -P -cpp
+CPPFLAGS         ?= $(IFLAGS)
+FC               ?= gfortran
+MPIF90           ?= mpif90
+FCFLAGS          ?= $(OPENMPLIBS) $(IFLAGS)
+F77              ?= $(FC)
+FFLAGS           ?= 
+LD               = $(MPIF90)
+LDFLAGS          ?= $(FCFLAGS) $(OPENMPLIBS) $(IFLAGS)
+AR               ?= $(BUILD_PREFIX)/bin/$(uname -m)-conda-linux-gnu-ar
+ARFLAGS          ?=
+RANLIB           = echo
+
+
+# -----------------------------
+# libraries
+
+#
+#LIBS             = $(extlibs_prefix)/$(fc_kind)/$(f90)/lib/libiotk.a
+LIBS             = ./libiotk.a
+IFLAGS           = -I./ -I../ -I../include

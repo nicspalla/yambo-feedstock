@@ -1,0 +1,59 @@
+diff --git i/configure w/configure
+index 069e245a3..a15da1580 100755
+--- i/configure
++++ w/configure
+@@ -9480,7 +9480,7 @@ if eval test \${$as_ac_File+y}
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPIFC"; then
+   eval "$as_ac_File=yes"
+@@ -9718,7 +9718,7 @@ if eval test \${$as_ac_File+y}
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPIF77"; then
+   eval "$as_ac_File=yes"
+@@ -9791,7 +9791,7 @@ if eval test \${$as_ac_File+y}
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPIFC"; then
+   eval "$as_ac_File=yes"
+@@ -10056,7 +10056,7 @@ if eval test \${$as_ac_File+y}
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPICC"; then
+   eval "$as_ac_File=yes"
+@@ -10380,7 +10380,7 @@ if eval test \${$as_ac_File+y}
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+-  test "$cross_compiling" = yes &&
++  test "$cross_compiling" = "yes-but-no" &&
+   as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "$MPI_INC_DIR/mpif.h"; then
+   eval "$as_ac_File=yes"
+diff --git i/lib/iotk/Makefile.loc w/lib/iotk/Makefile.loc
+index f4bc0c49c..3e0f08ef8 100644
+--- i/lib/iotk/Makefile.loc
++++ w/lib/iotk/Makefile.loc
+@@ -85,4 +85,5 @@ define install
+  cp $(PACKAGE)/src/*.mod   $(LIBPATH)/include ; \
+  if test -e $(LIBPATH)/include/iotk_auxmacros.h; then rm -fr $(LIBPATH)/include/iotk_auxmacros.h; fi; \
+  cp $(PACKAGE)/include/*.h $(LIBPATH)/include 
++ cp $(PACKAGE)/include/*.mod $(LIBPATH)/include 
+ endef
