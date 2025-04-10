@@ -15,8 +15,8 @@ unset LD
 pushd devxlib
 ./configure \
     --prefix="${PREFIX}" \
-    --with-blas-libs="${PREFIX}/lib/libblas.so" \
-    --with-lapack-libs="${PREFIX}/lib/liblapack.so"
+    --with-blas-libs="${PREFIX}/lib/libopenblas.so" \
+    --with-lapack-libs="${PREFIX}/lib/libopenblas.so"
 make -j"${CPU_COUNT}" install
 popd
 
@@ -30,8 +30,10 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
 fi
 
 cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
+cp -f ${RECIPE_DIR}/iotk_specials.h include/
 ./configure
-make -j"${CPU_COUNT}" libiotk.a
+make -j"${CPU_COUNT}" loclib_only
+make -j"${CPU_COUNT}" iotk.x
 cp src/*.mod include/
 popd
 
@@ -51,16 +53,17 @@ fi
 ./configure \
     --prefix="${PREFIX}" \
     --enable-mpi --enable-open-mp \
+    --enable-time-profile --enable-memory-profile \
     --with-fft-path="${PREFIX}" \
     --with-hdf5-path="${PREFIX}" \
-    --with-netcdf-libs="${PREFIX}/lib/libnetcdf.so" \
-    --with-netcdff-libs="${PREFIX}/lib/libnetcdff.so" \
+    --with-netcdf-path="${PREFIX}" \
+    --with-netcdff-path="${PREFIX}" \
     --enable-hdf5-par-io \
-    --with-libxc-libdir="${PREFIX}/lib" \
+    --with-libxc-path="${PREFIX}" \
     --with-scalapack-libs="${PREFIX}/lib/libscalapack.so" \
     --with-blacs-libs="${PREFIX}/lib/libscalapack.so" \
-    --with-blas-libs="${PREFIX}/lib/libblas.so" \
-    --with-lapack-libs="${PREFIX}/lib/liblapack.so" \
+    --with-blas-libs="${PREFIX}/lib/libopenblas.so" \
+    --with-lapack-libs="${PREFIX}/lib/libopenblas.so" \
     --with-devxlib-path="${PREFIX}" \
     --with-iotk-libs="${SRC_DIR}/iotk/src/libiotk.a" \
     --with-iotk-libdir="${SRC_DIR}/iotk/src" \
@@ -70,7 +73,7 @@ fi
     --with-petsc-path="${PREFIX}" \
     --enable-slepc-linalg || (cat config.log && exit 111)
     
-make -j1 all || (cat log/*.log && exit 222)
+make -j"${CPU_COUNT}" all || (cat log/*.log && exit 222)
 #for f in `find ./ -name "*.log"`; do echo "Printing the contents of '$f'"; cat $f; done
 
 ls -la $PREFIX/bin

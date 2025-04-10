@@ -38,12 +38,11 @@ requirements:
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
     - openmpi
-    - libblas
-    - liblapack
+    - openblas * *openmp*
     - fftw * *openmpi*
-    - hdf5 1.12 *openmpi*
-    - libnetcdf 4.8 *openmpi*
-    - netcdf-fortran 4.5 *openmpi*
+    - hdf5 * *openmpi*
+    - libnetcdf * *openmpi*
+    - netcdf-fortran * *openmpi*
     - zlib
     - scalapack
     - libxc <7 *cpu*
@@ -55,8 +54,7 @@ requirements:
     - zlib
     - libcurl
     - scalapack
-    - libblas
-    - liblapack
+    - openblas
     - hdf5
     - libnetcdf
     - netcdf-fortran

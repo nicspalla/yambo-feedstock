@@ -8,7 +8,7 @@
 .F.o:
 	@rm -f $*.f90
 	(eval $(FPP) $(IFLAGS) $(dopts) $*.F > $*.f90 ) > /dev/null
-	(eval $(FC)  $(FCFLAGS) -c $*.f90 ) > /dev/null
+	(eval $(MPIF90)  $(FCFLAGS) -c $*.f90 ) > /dev/null
 	@rm -f $*.f90
 
 # -----------------------------
@@ -21,11 +21,11 @@ CPP              ?= cpp
 FPP              ?= $(FC) -E -P -cpp
 CPPFLAGS         ?= $(IFLAGS)
 FC               ?= gfortran
-MPIF90           ?= $(FC)
+MPIF90           ?= mpif90
 FCFLAGS          ?= $(OPENMPLIBS) $(IFLAGS)
 F77              ?= $(FC)
 FFLAGS           ?= 
-LD               = $(FC)
+LD               = $(MPIF90)
 LDFLAGS          ?= $(FCFLAGS) $(OPENMPLIBS) $(IFLAGS)
 AR               ?= $(BUILD_PREFIX)/bin/$(uname -m)-conda-linux-gnu-ar
 ARFLAGS          ?=
