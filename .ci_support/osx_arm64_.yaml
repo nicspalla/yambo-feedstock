@@ -41,19 +41,3 @@ zip_keys:
   - fortran_compiler_version
 zlib:
 - '1'
-
-CONDA_BUILD_SYSROOT:
-- /Users/nicola/src/yambo-feedstock/SDKs/MacOSX11.0.sdk
-
-
-CONDA_BUILD_SYSROOT:
-- /Users/nicola/src/yambo-feedstock/SDKs/MacOSX11.0.sdk
-
-
-CONDA_BUILD_SYSROOT:
-- /Users/nicola/src/yambo-feedstock/SDKs/MacOSX11.0.sdk
-
-
-CONDA_BUILD_SYSROOT:
-- /Users/nicola/src/yambo-feedstock/SDKs/MacOSX11.0.sdk
-
