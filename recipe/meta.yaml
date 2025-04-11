@@ -27,7 +27,7 @@ build:
 
 requirements:
   build:
-    #- {{ stdlib('c') }}
+    - {{ stdlib('c') }}  # [linux]
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - make
@@ -37,7 +37,7 @@ requirements:
   host:
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
-    - coreutils # [osx]
+    - coreutils  # [osx]
     - openmpi
     - openblas * *openmp*
     - fftw * *openmpi*
