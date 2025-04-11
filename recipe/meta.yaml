@@ -23,11 +23,11 @@ source:
 
 build:
   number: 0
-  skip: true  # [not linux]
+  skip: true  # [win]
 
 requirements:
   build:
-    - {{ stdlib('c') }}
+    #- {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - make
@@ -37,6 +37,7 @@ requirements:
   host:
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
+    - coreutils # [osx]
     - openmpi
     - openblas * *openmp*
     - fftw * *openmpi*
