@@ -22,7 +22,7 @@ source:
       - iotk-cross.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
