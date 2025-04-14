@@ -31,9 +31,9 @@ openblas:
 openmpi:
 - '4'
 petsc:
-- '3.22'
+- '3.23'
 slepc:
-- '3.22'
+- '3.23'
 target_platform:
 - linux-64
 zip_keys:
