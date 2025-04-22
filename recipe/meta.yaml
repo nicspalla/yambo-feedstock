@@ -31,7 +31,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - make
-    - cmake
     - m4
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
