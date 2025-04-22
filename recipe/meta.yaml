@@ -35,7 +35,6 @@ requirements:
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
     - coreutils  # [osx]
-    - openmpi
   host:
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
