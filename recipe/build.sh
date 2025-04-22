@@ -33,7 +33,7 @@ cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
 cp -f ${RECIPE_DIR}/iotk_specials.h include/
 ./configure
 make -j"${CPU_COUNT}" loclib_only
-make -j"${CPU_COUNT}" iotk.x
+# make -j"${CPU_COUNT}" iotk.x
 cp src/*.mod include/
 popd
 
