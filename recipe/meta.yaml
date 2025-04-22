@@ -30,6 +30,7 @@ requirements:
     - {{ stdlib('c') }}  # [linux]
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
+    - cmake  # [not linux]
     - make
     - m4
     - libgomp  # [linux]
