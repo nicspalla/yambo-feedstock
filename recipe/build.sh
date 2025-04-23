@@ -52,8 +52,8 @@ fi
 sed -i.bak 's/\(test -r \$try_netcdff_libdir\/libnetcdff\.so\)/\1 || test -r \$try_netcdff_libdir\/libnetcdff.dylib/' configure
 #sed -i.bak 's/N=`grep -c ^processor \/proc\/cpuinfo`/N=1/' sbin/compilation/options.sh
 
-cp -f ${SRC_DIR}/devxlib/config/config.sub config/
-cp -f ${SRC_DIR}/devxlib/config/config.guess config/
+cp -f ${RECIPE_DIR}/config.sub config/
+cp -f ${RECIPE_DIR}/config.guess config/
 
 ./configure \
     --prefix="${PREFIX}" \
