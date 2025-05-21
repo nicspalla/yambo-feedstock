@@ -22,12 +22,13 @@ source:
       - iotk-cross.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
 
 build:
-  number: 2
-  skip: true  # [not linux]
+  number: 3
+  skip: true  # [win]
+  skip: true  # [osx-arm64]
 
 requirements:
   build:
-    - {{ stdlib('c') }}
+    - {{ stdlib('c') }}  # [linux]
     - {{ compiler('c') }}
     - {{ compiler('fortran') }}
     - make
@@ -37,6 +38,7 @@ requirements:
   host:
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
+    - coreutils  # [osx]
     - openmpi
     - openblas * *openmp*
     - fftw * *openmpi*
