@@ -24,7 +24,7 @@ source:
 build:
   number: 3
   skip: true  # [win]
-  skip: true  # [osx-arm64]
+  skip: true  # [osx_arm64]
 
 requirements:
   build:
