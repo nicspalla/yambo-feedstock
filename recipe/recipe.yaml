@@ -30,21 +30,29 @@ source:
 build:
   number: 4
   string: ${{ build_prefix }}_h${{ hash }}_${{ build }}
-  skip: true  # [win and osx_arm64]
+  skip:
+    - win
+    - osx
 
 requirements:
   build:
-    - ${{ stdlib('c') }}  # [linux]
+    - if: linux
+      then: ${{ stdlib('c') }}
     - ${{ compiler('c') }}
     - ${{ compiler('fortran') }}
     - make
     - m4
-    - libgomp  # [linux]
-    - llvm-openmp  # [osx]
+    - if: linux
+      then: libgomp
+    - if: osx
+      then: llvm-openmp
   host:
-    - libgomp  # [linux]
-    - llvm-openmp  # [osx]
-    - coreutils  # [osx]
+    - if: linux
+      then: libgomp
+    - if: osx
+      then:
+        - llvm-openmp
+        - coreutils
     - openmpi
     - openblas * *openmp*
     - fftw * *openmpi*
