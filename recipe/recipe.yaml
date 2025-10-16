@@ -18,7 +18,7 @@ source:
     sha256: ${{ sha256 }}
     patches:
       - if: cross_compilation
-        then: [yambo-non-x86.patch]
+        then: yambo-non-x86.patch
   - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/${{ devxlib_version }}/devicexlib-${{ devxlib_version }}.tar.gz
     sha256: ${{ devxlib_sha256 }}
     target_directory: devxlib
@@ -27,14 +27,12 @@ source:
     target_directory: iotk
     patches:
       - if: cross_compilation
-        then: [iotk-cross.patch]
+        then: iotk-cross.patch
 
 build:
   number: 4
   string: ${{ build_prefix }}_h${{ hash }}_${{ build }}
-  skip:
-    - win
-    - osx
+  skip: win
 
 requirements:
   build:
