@@ -1,7 +1,13 @@
-{% set name = "yambo" %}
-{% set version = "5.3.0" %}
-{% set sha256 = "97b6867c28af6ea690bb02446745e817adcedf95bcd568f132ef3510abbb1cfe" %}
-{% set devxlib_version = "0.8.5" %}
+hema_version: 1
+
+context:
+  name: yambo
+  versione: "5.3.0"
+  sha256: "97b6867c28af6ea690bb02446745e817adcedf95bcd568f132ef3510abbb1cfe"
+  devxlib_version: "0.9.0"
+  devxlib_sha256: "77c57a31381a69a2eb2a77138b131a553c96aff03ca934c88b8a6d8434b39460""
+  precision: ${{ precision | default('single') }}
+  build_prefix: ${{ precision }}
 
 package:
   name: {{ name }}
@@ -13,7 +19,7 @@ source:
     patches:
       - yambo-non-x86.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
   - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/{{ devxlib_version }}/devicexlib-{{ devxlib_version }}.tar.gz
-    sha256: 498d5c6804e697123d382d9dd35dedeb4b64228704f84711877c842b851d37df
+    sha256: {{ devxlib_sha256 }}
     folder: devxlib
   - url: https://github.com/yambo-code/yambo-libraries/raw/refs/tags/1.0/external/iotk-y1.2.2.tar.gz
     sha256: 64af6a4b98f3b62fcec603e4e1b00ef994f95a0efa53ab6593ebcfe6de1739ef
@@ -22,7 +28,8 @@ source:
       - iotk-cross.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
 
 build:
-  number: 3
+  number: 4
+  string: ${{ build_prefix }}_h${{ hash }}_${{ build }}
   skip: true  # [win]
   skip: true  # [osx_arm64]
 
@@ -48,8 +55,8 @@ requirements:
     - zlib
     - scalapack
     - libxc <7 *cpu*
-    - petsc * *complex*
-    - slepc * *complex*
+    - petsc * complex*
+    - slepc * complex*
   run:
     - openmpi
     - fftw

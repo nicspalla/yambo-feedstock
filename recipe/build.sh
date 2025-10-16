@@ -54,18 +54,25 @@ sed -i.bak 's/\(test -r \$try_netcdff_libdir\/libnetcdff\.so\)/\1 || test -r \$t
 cp -f ${SRC_DIR}/devxlib/config/config.sub config/
 cp -f ${SRC_DIR}/devxlib/config/config.guess config/
 
+if [[ "${precision}" == "single" ]]; then
+  with_precision="--disable-dp"
+  # conda-forge doesn't have single precision petsc and slepc builds
+  slepc_linalg="--disable-slepc-linalg"
+else
+  with_precision="--enable-dp"
+  slepc_linalg="--with-slepc-path=${PREFIX} --with-petsc-path=${PREFIX} --enable-slepc-linalg"
+fi
+
 ./configure \
     --prefix="${PREFIX}" \
-    --enable-mpi --enable-open-mp \
+    --enable-mpi --enable-open-mp ${with_precision} \
     --enable-time-profile --enable-memory-profile \
     --with-fft-path="${PREFIX}" \
+    --enable-hdf5-par-io \
     --with-hdf5-path="${PREFIX}" \
     --with-netcdf-path="${PREFIX}" \
     --with-netcdff-path="${PREFIX}" \
-    --enable-hdf5-par-io \
     --with-libxc-path="${PREFIX}" \
-    --with-scalapack-libs="-L${PREFIX}/lib -lscalapack" \
-    --with-blacs-libs="-L${PREFIX}/lib -lscalapack" \
     --with-blas-libs="-L${PREFIX}/lib -lopenblas" \
     --with-lapack-libs="-L${PREFIX}/lib -lopenblas" \
     --with-devxlib-path="${PREFIX}" \
@@ -73,9 +80,9 @@ cp -f ${SRC_DIR}/devxlib/config/config.guess config/
     --with-iotk-libdir="${SRC_DIR}/iotk/src" \
     --with-iotk-includedir="${SRC_DIR}/iotk/include" \
     --enable-par-linalg \
-    --with-slepc-path="${PREFIX}" \
-    --with-petsc-path="${PREFIX}" \
-    --enable-slepc-linalg || (cat config.log && exit 111)
+    --with-scalapack-libs="-L${PREFIX}/lib -lscalapack" \
+    --with-blacs-libs="-L${PREFIX}/lib -lscalapack" \
+    ${slepc_linalg} || (cat config.log && exit 111)
     
 make -j"${CPU_COUNT}" all || (cat log/*.log && exit 222)
 #for f in `find ./ -name "*.log"`; do echo "Printing the contents of '$f'"; cat $f; done
