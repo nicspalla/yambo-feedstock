@@ -17,7 +17,8 @@ source:
   - url: https://github.com/yambo-code/yambo/archive/refs/tags/${{ version }}.tar.gz
     sha256: ${{ sha256 }}
     patches:
-      - yambo-non-x86.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
+      - if: cross_compilation
+        then: [yambo-non-x86.patch]
   - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/${{ devxlib_version }}/devicexlib-${{ devxlib_version }}.tar.gz
     sha256: ${{ devxlib_sha256 }}
     target_directory: devxlib
@@ -25,7 +26,8 @@ source:
     sha256: 64af6a4b98f3b62fcec603e4e1b00ef994f95a0efa53ab6593ebcfe6de1739ef
     target_directory: iotk
     patches:
-      - iotk-cross.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
+      - if: cross_compilation
+        then: [iotk-cross.patch]
 
 build:
   number: 4
