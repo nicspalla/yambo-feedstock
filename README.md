@@ -16,12 +16,99 @@ Documentation: http://www.yambo-code.org/wiki
 YAMBO implements Many-Body Perturbation Theory (MBPT) methods (such as GW and BSE) and Time-Dependent Density Functional Theory (TDDFT), which allows for accurate prediction of fundamental properties as band gaps of semiconductors, band alignments, defect quasi-particle energies, optics and out-of-equilibrium properties of materials.
 The code resorts to previously computed electronic structure, usually at the Density Functional Theory (DFT) level and for this reason it is interfaced with two of the most used planewave DFT codes used in scientific community, Quantum ESPRESSO and Abinit.
 
-
 Current build status
 ====================
 
 
 <table>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux_64_precisiondouble</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_precisiondouble" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_precisionsingle</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_precisionsingle" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_precisiondouble</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_precisiondouble" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_precisionsingle</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_precisionsingle" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le_precisiondouble</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_precisiondouble" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le_precisionsingle</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_precisionsingle" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_precisiondouble</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_precisiondouble" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_precisionsingle</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_precisionsingle" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_precisiondouble</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=win&configuration=win%20win_64_precisiondouble" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_precisionsingle</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=win&configuration=win%20win_64_precisionsingle" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </td>
+  </tr>
 </table>
 
 Current release info
