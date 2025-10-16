@@ -10,34 +10,33 @@ context:
   build_prefix: ${{ precision }}
 
 package:
-  name: {{ name }}
-  version: {{ version }}
+  name: ${{ name }}
+  version: ${{ version }}
 
 source:
-  - url: https://github.com/yambo-code/yambo/archive/refs/tags/{{ version }}.tar.gz
-    sha256: {{ sha256 }}
+  - url: https://github.com/yambo-code/yambo/archive/refs/tags/${{ version }}.tar.gz
+    sha256: ${{ sha256 }}
     patches:
       - yambo-non-x86.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
-  - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/{{ devxlib_version }}/devicexlib-{{ devxlib_version }}.tar.gz
-    sha256: {{ devxlib_sha256 }}
-    folder: devxlib
+  - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/${{ devxlib_version }}/devicexlib-${{ devxlib_version }}.tar.gz
+    sha256: ${{ devxlib_sha256 }}
+    target_directory: devxlib
   - url: https://github.com/yambo-code/yambo-libraries/raw/refs/tags/1.0/external/iotk-y1.2.2.tar.gz
     sha256: 64af6a4b98f3b62fcec603e4e1b00ef994f95a0efa53ab6593ebcfe6de1739ef
-    folder: iotk
+    target_directory: iotk
     patches:
       - iotk-cross.patch  # [os.environ.get("CONDA_BUILD_CROSS_COMPILATION", "0") == "1"]
 
 build:
   number: 4
   string: ${{ build_prefix }}_h${{ hash }}_${{ build }}
-  skip: true  # [win]
-  skip: true  # [osx_arm64]
+  skip: true  # [win and osx_arm64]
 
 requirements:
   build:
-    - {{ stdlib('c') }}  # [linux]
-    - {{ compiler('c') }}
-    - {{ compiler('fortran') }}
+    - ${{ stdlib('c') }}  # [linux]
+    - ${{ compiler('c') }}
+    - ${{ compiler('fortran') }}
     - make
     - m4
     - libgomp  # [linux]
@@ -55,8 +54,10 @@ requirements:
     - zlib
     - scalapack
     - libxc <7 *cpu*
-    - petsc * complex*
-    - slepc * complex*
+    - if: precision == 'double'
+      then:
+        - petsc * complex*
+        - slepc * complex*
   run:
     - openmpi
     - fftw
@@ -67,15 +68,20 @@ requirements:
     - hdf5
     - libnetcdf
     - netcdf-fortran
-    - petsc
-    - slepc
+    - if: precision == 'double'
+      then:
+        - petsc
+        - slepc
 
-test:
-  commands:
-    - yambo --help
+tests:
+  - package_contents:
+      bin:
+        - yambo
+        - ypp
+        - p2y
 
 about:
-  home: http://www.yambo-code.org/
+  homepage: http://www.yambo-code.org/
   license: GPL-2.0-or-later
   license_family: GPL
   license_file: COPYING
@@ -83,8 +89,8 @@ about:
   description: |
     YAMBO implements Many-Body Perturbation Theory (MBPT) methods (such as GW and BSE) and Time-Dependent Density Functional Theory (TDDFT), which allows for accurate prediction of fundamental properties as band gaps of semiconductors, band alignments, defect quasi-particle energies, optics and out-of-equilibrium properties of materials.
     The code resorts to previously computed electronic structure, usually at the Density Functional Theory (DFT) level and for this reason it is interfaced with two of the most used planewave DFT codes used in scientific community, Quantum ESPRESSO and Abinit.
-  doc_url: http://www.yambo-code.org/
-  dev_url: http://www.yambo-code.org/
+  documentation: http://www.yambo-code.org/wiki
+  repository: https://github.com/yambo-code/yambo
 
 extra:
   recipe-maintainers:
