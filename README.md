@@ -75,6 +75,20 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_precisionsingle" alt="variant">
                 </a>
               </td>
+            </tr><tr>
+              <td>osx_64_precisiondouble</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_precisiondouble" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_precisionsingle</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_precisionsingle" alt="variant">
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
