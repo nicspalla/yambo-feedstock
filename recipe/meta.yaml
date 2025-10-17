@@ -25,7 +25,7 @@ source:
 
 build:
   number: {{ build }}
-  string: {{ precision }}_h{{ hash }}_{{ build }}
+  string: {{ precision }}_h{{ PKG_HASH }}_{{ build }}
   skip: true  # [win or osx_arm64]
 
 requirements:
