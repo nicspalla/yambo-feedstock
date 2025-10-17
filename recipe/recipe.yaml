@@ -1,0 +1,106 @@
+schema_version: 1
+
+context:
+  name: yambo
+  version: "5.3.0"
+  sha256: "97b6867c28af6ea690bb02446745e817adcedf95bcd568f132ef3510abbb1cfe"
+  devxlib_version: "0.9.0"
+  devxlib_sha256: "77c57a31381a69a2eb2a77138b131a553c96aff03ca934c88b8a6d8434b39460"
+  precision: ${{ precision | default('single') }}
+  build_prefix: ${{ precision }}
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/yambo-code/yambo/archive/refs/tags/${{ version }}.tar.gz
+    sha256: ${{ sha256 }}
+    patches:
+      - if: cross_compilation
+        then: yambo-non-x86.patch
+  - url: https://gitlab.com/max-centre/components/devicexlib/-/archive/${{ devxlib_version }}/devicexlib-${{ devxlib_version }}.tar.gz
+    sha256: ${{ devxlib_sha256 }}
+    target_directory: devxlib
+  - url: https://github.com/yambo-code/yambo-libraries/raw/refs/tags/1.0/external/iotk-y1.2.2.tar.gz
+    sha256: 64af6a4b98f3b62fcec603e4e1b00ef994f95a0efa53ab6593ebcfe6de1739ef
+    target_directory: iotk
+    patches:
+      - if: cross_compilation
+        then: iotk-cross.patch
+
+build:
+  number: 4
+  string: ${{ build_prefix }}_h${{ hash }}_${{ build }}
+  skip: win
+
+requirements:
+  build:
+    - if: linux
+      then: ${{ stdlib('c') }}
+    - ${{ compiler('c') }}
+    - ${{ compiler('fortran') }}
+    - make
+    - m4
+    - if: linux
+      then: libgomp
+    - if: osx
+      then: llvm-openmp
+  host:
+    - if: linux
+      then: libgomp
+    - if: osx
+      then:
+        - llvm-openmp
+        - coreutils
+    - openmpi
+    - openblas * *openmp*
+    - fftw * *openmpi*
+    - hdf5 * *openmpi*
+    - libnetcdf * *openmpi*
+    - netcdf-fortran * *openmpi*
+    - zlib
+    - scalapack
+    - libxc <7 *cpu*
+    - if: precision == 'double'
+      then:
+        - petsc * complex*
+        - slepc * complex*
+  run:
+    - openmpi
+    - fftw
+    - zlib
+    - libcurl
+    - scalapack
+    - openblas
+    - hdf5
+    - libnetcdf
+    - netcdf-fortran
+    - if: precision == 'double'
+      then:
+        - petsc
+        - slepc
+
+tests:
+  - package_contents:
+      bin:
+        - yambo
+        - ypp
+        - p2y
+
+about:
+  homepage: http://www.yambo-code.org/
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: COPYING
+  summary: Open-source many-body perturbation theory and time-dependent density functional theory
+  description: |
+    YAMBO implements Many-Body Perturbation Theory (MBPT) methods (such as GW and BSE) and Time-Dependent Density Functional Theory (TDDFT), which allows for accurate prediction of fundamental properties as band gaps of semiconductors, band alignments, defect quasi-particle energies, optics and out-of-equilibrium properties of materials.
+    The code resorts to previously computed electronic structure, usually at the Density Functional Theory (DFT) level and for this reason it is interfaced with two of the most used planewave DFT codes used in scientific community, Quantum ESPRESSO and Abinit.
+  documentation: http://www.yambo-code.org/wiki
+  repository: https://github.com/yambo-code/yambo
+
+extra:
+  recipe-maintainers:
+    - ltalirz
+    - nicspalla
