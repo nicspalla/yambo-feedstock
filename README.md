@@ -16,6 +16,7 @@ Documentation: http://www.yambo-code.org/wiki
 YAMBO implements Many-Body Perturbation Theory (MBPT) methods (such as GW and BSE) and Time-Dependent Density Functional Theory (TDDFT), which allows for accurate prediction of fundamental properties as band gaps of semiconductors, band alignments, defect quasi-particle energies, optics and out-of-equilibrium properties of materials.
 The code resorts to previously computed electronic structure, usually at the Density Functional Theory (DFT) level and for this reason it is interfaced with two of the most used planewave DFT codes used in scientific community, Quantum ESPRESSO and Abinit.
 
+
 Current build status
 ====================
 
@@ -87,20 +88,6 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_precisionsingle" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_precisiondouble</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_precisiondouble" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_precisionsingle</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12895&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yambo-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_precisionsingle" alt="variant">
                 </a>
               </td>
             </tr>
