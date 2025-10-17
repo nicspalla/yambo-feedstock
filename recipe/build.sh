@@ -23,11 +23,11 @@ popd
 # # Build iotk
 pushd iotk
 
-if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
-    sed -i.bak1 's/ -march=[^ ]*//' configure
-    sed -i.bak2 's/ -mcpu=[^ ]*//' configure
-    sed -i.bak3 's/ -mtune=[^ ]*//' configure
-fi
+#if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
+#    sed -i.bak1 's/ -march=[^ ]*//' configure
+#    sed -i.bak2 's/ -mcpu=[^ ]*//' configure
+#    sed -i.bak3 's/ -mtune=[^ ]*//' configure
+#fi
 
 cp -f ${RECIPE_DIR}/iotk-make.sys ../make.sys
 cp -f ${RECIPE_DIR}/iotk_specials.h include/
