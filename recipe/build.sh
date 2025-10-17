@@ -23,7 +23,7 @@ popd
 # # Build iotk
 pushd iotk
 
-if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
     sed -i.bak1 's/ -march=[^ ]*//' configure
     sed -i.bak2 's/ -mcpu=[^ ]*//' configure
     sed -i.bak3 's/ -mtune=[^ ]*//' configure
@@ -44,7 +44,7 @@ ls -la ${SRC_DIR}/iotk/src/libiotk.a
 
 # export LD="${ORIG_LD}"
 
-if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:0}" == "1" ]]; then
     sed -i.bak1 's/ -march=[^ ]*//' configure
     sed -i.bak2 's/ -mcpu=[^ ]*//' configure
     sed -i.bak3 's/ -mtune=[^ ]*//' configure
